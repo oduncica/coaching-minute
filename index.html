@@ -3,11 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coaching Minute</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
-    <!-- En attente du logo -->
+    <title>Boost Étudiant</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Open+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- DIV 1 : Accueil -->
+    <section id="accueil">
+      <div class="top-bar">
+        <h1 class="logo">Boost étudiant</h1>
+      </div>
+
+      <h2 class="bienvenue" id="titre-principal">Bienvenue</h2>
+
+      <p class="intro">
+        Boost Étudiant est une application de coaching express conçue pour
+        t’accompagner dans les moments clés de ta vie universitaire. Stressé
+        avant un examen ? Démotivé en plein semestre ? En pleine remise en
+        question sur ton orientation ? Notre IA te propose en temps réel un mini
+        coaching personnalisé, adapté à ton humeur, tes objectifs et ton niveau.
+      </p>
+
+      <button class="btn" onclick="scrollToForm()">Commencer</button>
+    </section>
+
+    <!-- DIV 2 : Formulaire -->
+    <section id="formulaire">
+      <h2 class="form-title" id="titre-principal">Coach Minute</h2>
+      <p class="form-desc">Les champs avec un * sont obligatoires.</p>
+
+      <form>
+        <label for="age">Quel est ton âge ? *</label>
+        <select id="age" name="age" required>
+          <option value="">-- Sélectionne ton âge --</option>
+          <option value="16-20">16-20 ans</option>
+          <option value="21-25">21-25 ans</option>
+          <option value="26-30">26-30 ans</option>
+        </select>
+
+        <label for="secteur">Secteur d'activité *</label>
+        <select id="secteur" name="secteur" required>
+          <option value="">-- Choisis ton domaine --</option>
+          <option value="informatique">Informatique</option>
+          <option value="santé">Santé</option>
+          <option value="lettres">Lettres & Sciences humaines</option>
+          <option value="droit">Droit</option>
+          <option value="commerce">Commerce</option>
+          <option value="autre">Autre</option>
+        </select>
+
+        <label for="besoin">Ce qui te freine actuellement *</label>
+        <select id="besoin" name="besoin" required>
+          <option value="">-- Choisis une situation --</option>
+          <option value="stress">Je me sens stressé(e) / dépassé(e)</option>
+          <option value="motivation">Je manque de motivation</option>
+          <option value="organisation">Je n’arrive pas à m’organiser</option>
+          <option value="solitude">Je me sens seul(e) / isolé(e)</option>
+          <option value="orientation">Je ne sais pas où je vais</option>
+        </select>
+
+        <button type="submit" class="btn form-btn">Envoyer</button>
+      </form>
+    </section>
+
+    <script>
+      function scrollToForm() {
+        document
+          .getElementById("formulaire")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
   </body>
 </html>
