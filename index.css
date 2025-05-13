@@ -1,1 +1,115 @@
 // En attente de la finalisation du graphisme
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  background-color: #011126;
+  color: #ffffff;
+}
+
+.top-bar {
+  padding: 20px;
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  font-style: italic;
+  color: #9be2f2;
+}
+
+.bienvenue {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  text-align: center;
+  font-size: 48px;
+  color: #f24607;
+  text-shadow: 0px 0px 8px rgba(155, 226, 242, 0.2),
+    2px 2px 6px rgba(0, 0, 0, 0.25);
+  margin-top: 40px;
+}
+
+.intro {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 30px auto;
+  width: 80%;
+  color: #ffffff;
+}
+
+.btn {
+  display: block;
+  margin: 40px auto;
+  padding: 15px 40px;
+  background-color: #f26e22;
+  border: none;
+  font-size: 32px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  color: #eeeeee;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* formul. */
+#formulaire {
+  background-color: #011126;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 40px;
+  color: #9be2f2;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900; /* Black */
+
+  font-size: 48px; /* ajuste selon ton besoin */
+  color: #f24607;
+  text-align: center;
+  text-shadow: 0px 0px 8px rgba(155, 226, 242, 0.2),
+    /* inner glow imitation */ 2px 2px 6px rgba(0, 0, 0, 0.25); /* drop shadow */
+  margin: 40px 0;
+}
+
+.form-desc {
+  font-size: 20px;
+  font-style: italic;
+  color: #eeeeee;
+  margin: 20px auto 40px;
+  max-width: 600px;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  text-align: left;
+  font-size: 18px;
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #cfe8ee;
+  border: none;
+  border-radius: 6px;
+}
+
+.form-btn {
+  margin-top: 30px;
+}

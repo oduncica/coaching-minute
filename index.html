@@ -3,11 +3,70 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coaching Minute</title>
-    <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
-    <!-- En attente du logo -->
+    <title>Boost Étudiant</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Open+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <script type="module" src="/src/main.jsx"></script>
+    <!-- DIV 1 : Accueil -->
+    <section id="accueil">
+      <div class="top-bar">
+        <h1 class="logo">Boost étudiant</h1>
+      </div>
+
+      <h2 class="bienvenue" id="titre-principal">Bienvenue</h2>
+
+      <p class="intro">
+        Boost Étudiant est une application de coaching express conçue pour
+        t’accompagner dans les moments clés de ta vie universitaire. Stressé
+        avant un examen ? Démotivé en plein semestre ? En pleine remise en
+        question sur ton orientation ? Notre IA te propose en temps réel un mini
+        coaching personnalisé, adapté à ton humeur, tes objectifs et ton niveau.
+      </p>
+
+      <button class="btn" onclick="scrollToForm()">Commencer</button>
+    </section>
+
+    <section id="formulaire">
+      <iframe
+        data-tally-src="https://tally.so/embed/wbDJ61?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="387"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Coaching Minute Form"
+      ></iframe>
+      <script>
+        var d = document,
+          w = "https://tally.so/widgets/embed.js",
+          v = function () {
+            "undefined" != typeof Tally
+              ? Tally.loadEmbeds()
+              : d
+                  .querySelectorAll("iframe[data-tally-src]:not([src])")
+                  .forEach(function (e) {
+                    e.src = e.dataset.tallySrc;
+                  });
+          };
+        if ("undefined" != typeof Tally) v();
+        else if (d.querySelector('script[src="' + w + '"]') == null) {
+          var s = d.createElement("script");
+          (s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
+        }
+      </script>
+    </section>
+
+    <script>
+      function scrollToForm() {
+        document
+          .getElementById("formulaire")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
   </body>
 </html>
