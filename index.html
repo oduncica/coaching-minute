@@ -9,7 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Open+Sans:wght@600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
   </head>
 
   <body>
@@ -25,61 +25,82 @@
       <h2 class="bienvenue" id="titre-principal">Bienvenue</h2>
 
       <p class="intro">
-        Coaching Minute est une solution innovante de coaching audio pensée pour
-        accompagner les étudiants à chaque étape de leur parcours.
+        Entrez votre requête ci-dessous et cliquez sur "Générer" pour obtenir
+        une réponse de notre IA.
       </p>
-      <p class="intro">
-        Vous avez besoin d’un coup de pouce pour mieux réussir vos études ? Vous
-        vous interrogez sur votre orientation scolaire ? Il vous suffit de poser
-        vos questions à notre IA : elle vous apportera des réponses claires,
-        adaptées à votre profil, et à votre niveau scolaire.
-      </p>
-      <p class="intro">
-        Grâce à Coaching Minute, avancez plus sereinement vers l’enseignement
-        supérieur et prenez en main votre avenir en toute confiance.
-      </p>
-
-      <button class="btn" onclick="scrollToForm()">Commencer</button>
     </section>
 
     <section id="formulaire">
-      <iframe
-        data-tally-src="https://tally.so/embed/wbDJ61?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-        width="100%"
-        height="387"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Coaching Minute Form"
-      ></iframe>
-      <script>
-        var d = document,
-          w = "https://tally.so/widgets/embed.js",
-          v = function () {
-            "undefined" != typeof Tally
-              ? Tally.loadEmbeds()
-              : d
-                  .querySelectorAll("iframe[data-tally-src]:not([src])")
-                  .forEach(function (e) {
-                    e.src = e.dataset.tallySrc;
-                  });
-          };
-        if ("undefined" != typeof Tally) v();
-        else if (d.querySelector('script[src="' + w + '"]') == null) {
-          var s = d.createElement("script");
-          (s.src = w), (s.onload = v), (s.onerror = v), d.body.appendChild(s);
-        }
-      </script>
+      <div class="form-container">
+        <label for="user-input">Votre requête :</label>
+        <textarea
+          id="user-input"
+          placeholder="Entrez votre requête ici..."
+          rows="5"
+          style="width: 100%"
+        ></textarea>
+        <button id="generate-btn" class="btn">Générer</button>
+      </div>
+      <div id="response-container" style="margin-top: 20px">
+        <h3>Réponse :</h3>
+        <p id="response-text"></p>
+      </div>
     </section>
 
     <script>
-      function scrollToForm() {
-        document
-          .getElementById("formulaire")
-          .scrollIntoView({ behavior: "smooth" });
-      }
+      document
+        .getElementById("generate-btn")
+        .addEventListener("click", async () => {
+          const userInput = document.getElementById("user-input").value.trim();
+          const responseText = document.getElementById("response-text");
+
+          if (!userInput) {
+            responseText.textContent = "Veuillez entrer une requête.";
+            return;
+          }
+
+          responseText.textContent = "Génération en cours...";
+
+          try {
+            const response = await fetch(
+              "https://openrouter.ai/api/v1/chat/completions",
+              {
+                method: "POST",
+                headers: {
+                  Authorization:
+                    "Bearer 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", // Remplacez par votre clé API OpenRouter
+                  "Content-Type": "application/json",
+                  // "HTTP-Referer": "https://votre-site.com", // Facultatif
+                  // "X-Title": "Coaching Minute", // Facultatif
+                },
+                body: JSON.stringify({
+                  model: "mistralai/mistral-small-3.1-24b-instruct:free",
+                  messages: [
+                    {
+                      role: "user",
+                      content: userInput,
+                    },
+                  ],
+                }),
+              }
+            );
+
+            const data = await response.json();
+
+            if (
+              data.choices &&
+              data.choices[0] &&
+              data.choices[0].message.content
+            ) {
+              responseText.textContent = data.choices[0].message.content;
+            } else {
+              responseText.textContent = "Aucune réponse générée.";
+            }
+          } catch (error) {
+            responseText.textContent =
+              "Erreur lors de la génération : " + error.message;
+          }
+        });
     </script>
-    <script src="script.js"></script>
   </body>
 </html>
