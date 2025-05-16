@@ -68,10 +68,9 @@
         <button id="generate-btn" class="btn">Soumettre</button>
       </div>
       <div id="response-container" style="margin-top: 20px">
-        <h3>Réponse :</h3>
         <p id="response-text"></p>
       </div>
-      <div>
+      <div id="sendemail">
         <input
           type="email"
           id="user-email"
@@ -135,7 +134,7 @@
               responseText.textContent = data.choices[0].message.content;
 
               // Afficher l'option d'envoyer par email
-              document.getElementById("send-email-btn").style.display = "block";
+              document.getElementById("sendemail").style.display = "block";
 
               document
                 .getElementById("send-email-btn")
