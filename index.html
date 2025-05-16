@@ -13,6 +13,11 @@
   </head>
 
   <body>
+    <script
+      type="text/javascript"
+      src="https://cdn.emailjs.com/dist/email.min.js"
+    ></script>
+
     <section id="accueil">
       <img src="src/assets/logo.png" alt="Logo Coaching Minute" class="logo" />
 
@@ -66,6 +71,15 @@
         <h3>Réponse :</h3>
         <p id="response-text"></p>
       </div>
+      <div>
+        <input
+          type="email"
+          id="user-email"
+          placeholder="Entrez votre email :"
+          required
+        />
+        <button id="send-email-btn">Recevoir votre coaching par email</button>
+      </div>
     </section>
 
     <script>
@@ -98,6 +112,11 @@
                   model: "mistralai/mistral-small-3.1-24b-instruct:free",
                   messages: [
                     {
+                      role: "system",
+                      content:
+                        "Tu es un coach professionnel bienveillant, motivant et orienté vers les résultats. Donne des réponses claires, encourageantes, et structurées, avec des conseils pratiques.",
+                    },
+                    {
                       role: "user",
                       content: userInput,
                     },
@@ -114,6 +133,40 @@
               data.choices[0].message.content
             ) {
               responseText.textContent = data.choices[0].message.content;
+
+              // Afficher l'option d'envoyer par email
+              document.getElementById("send-email-btn").style.display = "block";
+
+              document
+                .getElementById("send-email-btn")
+                .addEventListener("click", () => {
+                  const userEmail = document
+                    .getElementById("user-email")
+                    .value.trim();
+
+                  if (!userEmail) {
+                    alert("Veuillez entrer un email valide.");
+                    return;
+                  }
+
+                  // Envoi de l'email via EmailJS
+                  emailjs
+                    .send("service_y5sttnf", "template_x49ey75", {
+                      to_email: userEmail,
+                      subject: "Réponse de ton coach virtuel",
+                      message: responseText.textContent,
+                    })
+                    .then(
+                      (response) => {
+                        alert("L'email a été envoyé avec succès !");
+                      },
+                      (error) => {
+                        alert(
+                          "Erreur lors de l'envoi de l'email : " + error.text
+                        );
+                      }
+                    );
+                });
             } else {
               responseText.textContent = "Aucune réponse générée.";
             }
