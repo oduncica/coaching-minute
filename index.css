@@ -10,10 +10,6 @@ body {
   flex-wrap: wrap;
 }
 
-.top-bar {
-  padding: 20px;
-}
-
 .logo {
   width: 10em;
   display: block;
@@ -61,9 +57,11 @@ body {
   transform: scale(1.05);
 }
 
-/* formul. */
+/* formulaire */
 #formulaire {
-  background-color: #f26e22;
+  margin-top: 100px;
+  border-color: #f26e22;
+  border-width: 2px;
   padding: 20px 20px;
   width: 40%;
   border-radius: 8px;

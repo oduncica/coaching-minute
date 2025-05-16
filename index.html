@@ -14,32 +14,53 @@
 
   <body>
     <section id="accueil">
-      <div class="top-bar">
-        <img
-          src="src/assets/logo.png"
-          alt="Logo Coaching Minute"
-          class="logo"
-        />
-      </div>
+      <img src="src/assets/logo.png" alt="Logo Coaching Minute" class="logo" />
 
       <h2 class="bienvenue" id="titre-principal">Bienvenue</h2>
 
-      <p class="intro">
-        Entrez votre requête ci-dessous et cliquez sur "Générer" pour obtenir
-        une réponse de notre IA.
-      </p>
+      <div class="intro">
+        <p>
+          Coaching Minute est une solution innovante de coaching audio pensée
+          pour accompagner les étudiants à chaque étape de leur parcours.
+        </p>
+        <p>
+          Vous avez besoin d’un coup de pouce pour mieux réussir vos études ?
+          Vous vous interrogez sur votre orientation scolaire ? Il vous suffit
+          de poser vos questions à notre IA : elle vous apportera des réponses
+          claires, adaptées à votre profil, et à votre niveau scolaire.
+        </p>
+        <p>
+          Grâce à Coaching Minute, avancez plus sereinement vers l’enseignement
+          supérieur et prenez en main votre avenir en toute confiance.
+        </p>
+      </div>
+
+      <script>
+        function scrollToForm() {
+          document
+            .querySelector("#formulaire")
+            .scrollIntoView({ behavior: "smooth" });
+        }
+      </script>
+
+      <button class="btn" onclick="scrollToForm()">Continuer</button>
     </section>
 
     <section id="formulaire">
+      <p class="intro">
+        Entrez votre problème ci-dessous et cliquez sur "Soumettre" pour obtenir
+        une réponse de votre coach.
+      </p>
+
       <div class="form-container">
-        <label for="user-input">Votre requête :</label>
+        <label for="user-input">Votre besoin :</label>
         <textarea
           id="user-input"
-          placeholder="Entrez votre requête ici..."
+          placeholder="Décrivez votre problème ici..."
           rows="5"
           style="width: 100%"
         ></textarea>
-        <button id="generate-btn" class="btn">Générer</button>
+        <button id="generate-btn" class="btn">Soumettre</button>
       </div>
       <div id="response-container" style="margin-top: 20px">
         <h3>Réponse :</h3>
